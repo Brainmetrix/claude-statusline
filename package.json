@@ -1,0 +1,143 @@
+{
+  "name": "claude-statusline",
+  "displayName": "Claude Statusline",
+  "description": "Shows Claude Code context usage, model, git branch, rate limits, and session duration in the VS Code status bar.",
+  "version": "1.0.0",
+  "publisher": "Brainmetrix",
+  "author": {
+    "name": "Vivek Singh Rajput",
+    "url": "https://github.com/Brainmetrix"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Brainmetrix/claude-statusline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Brainmetrix/claude-statusline/issues"
+  },
+  "homepage": "https://github.com/Brainmetrix/claude-statusline#readme",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#1a0a2e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "claude",
+    "claude code",
+    "anthropic",
+    "statusline",
+    "status bar",
+    "ai",
+    "context window",
+    "rate limit"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Claude Statusline",
+      "properties": {
+        "claudeStatusline.scriptPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to statusline.sh script. Leave empty to auto-detect from ~/.claude/statusline.sh"
+        },
+        "claudeStatusline.refreshInterval": {
+          "type": "number",
+          "default": 5,
+          "minimum": 2,
+          "maximum": 60,
+          "description": "How often to refresh the status bar (seconds)"
+        },
+        "claudeStatusline.showModel": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show model display name"
+        },
+        "claudeStatusline.showContextBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show context window progress bar"
+        },
+        "claudeStatusline.showGitBranch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show git branch"
+        },
+        "claudeStatusline.showRateLimits": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show rate limit percentages"
+        },
+        "claudeStatusline.showSessionDuration": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show session duration"
+        },
+        "claudeStatusline.alignment": {
+          "type": "string",
+          "default": "left",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "description": "Status bar item alignment"
+        },
+        "claudeStatusline.priority": {
+          "type": "number",
+          "default": 100,
+          "description": "Status bar item priority (higher = more left when left-aligned)"
+        },
+        "claudeStatusline.showSubscription": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show subscription plan and tier (Pro, Team, Max 5×, etc.)"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "claudeStatusline.refresh",
+        "title": "Claude Statusline: Refresh Now"
+      },
+      {
+        "command": "claudeStatusline.showDetails",
+        "title": "Claude Statusline: Show Details"
+      },
+      {
+        "command": "claudeStatusline.openSettings",
+        "title": "Claude Statusline: Open Settings"
+      },
+      {
+        "command": "claudeStatusline.diagnose",
+        "title": "Claude Statusline: Run Diagnostics"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.39",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vscode/vsce": "^2.32.0",
+    "eslint": "^8.57.1",
+    "typescript": "^5.9.3"
+  }
+}
