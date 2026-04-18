@@ -2,7 +2,7 @@
   "name": "claude-statusline",
   "displayName": "Claude Statusline",
   "description": "Shows Claude Code context usage, model, git branch, rate limits, and session duration in the VS Code status bar.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "Brainmetrix",
   "author": {
     "name": "Vivek Singh Rajput",
